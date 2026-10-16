@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="kn" translate="no" class="notranslate">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="google" content="notranslate">
+  <title>Thota Mitra (ತೋಟ ಮಿತ್ರ) - Arecanut & Coconut Advisory</title>
+  
+  <meta name="description" content="Real-time Kannada-first monsoon fruit rot (koleroga) spray decision support and plantation profit planner for arecanut and coconut farmers in Karnataka.">
+  <meta name="theme-color" content="#1B4332">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%231B4332'/><text x='50' y='65' font-size='50' text-anchor='middle' fill='%23E9C46A'>🌴</text></svg>">
+
+  <!-- Google Fonts: Inter & Noto Sans Kannada -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+Kannada:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  
+  <!-- App Stylesheet -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Leaflet Map JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+<body translate="no" class="notranslate">
+
+  <!-- APP HEADER -->
+  <header class="app-header">
+    <div class="header-top">
+      <div class="brand-wrapper">
+        <div class="brand-icon">🌴</div>
+        <div class="brand-titles">
+          <h1 data-i18n="app.title">ತೋಟ ಮಿತ್ರ</h1>
+          <div class="tagline" data-i18n="app.tagline">ನಿಖರ ಹವಾಮಾನ, ವಿಶ್ವಾಸಾರ್ಹ ತೋಟಗಾರಿಕೆ</div>
+        </div>
+      </div>
+      <div class="header-controls">
+        <button id="cropToggleBtn" class="crop-btn crop-badge-active" aria-label="Toggle crop">
+          🌴 ಅಡಿಕೆ
+        </button>
+        <button id="langToggleBtn" class="lang-btn" aria-label="Toggle Language">
+          🌐 English
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVIGATION TABS -->
+  <nav class="app-nav" aria-label="Main Navigation">
+    <button class="nav-tab-btn active" data-tab="tabDashboard">
+      <span class="tab-icon">🏠</span>
+      <span data-i18n="nav.dashboard">ಮುಖಪುಟ</span>
+    </button>
+    <button class="nav-tab-btn" data-tab="tabProfit">
+      <span class="tab-icon">💰</span>
+      <span data-i18n="nav.profit_planner">ವೆಚ್ಚ & ಲಾಭ</span>
+    </button>
+    <button class="nav-tab-btn" data-tab="tabDiary">
+      <span class="tab-icon">📖</span>
+      <span data-i18n="nav.farm_diary">ದಿನಚರಿ</span>
+    </button>
+    <button class="nav-tab-btn" data-tab="tabAsk">
+      <span class="tab-icon">🤖</span>
+      <span data-i18n="nav.ask_mitra">ಕೃಷಿ ಸಲಹೆಗಾರ</span>
+    </button>
+  </nav>
+
+  <!-- DISCLAIMER BANNER -->
+  <aside class="disclaimer-banner" role="alert">
+    <span class="disclaimer-icon">⚠️</span>
+    <span data-i18n="app.disclaimer_banner">
+      ಸೂಚನೆ: ಇದು ನಿರ್ಧಾರ ಬೆಂಬಲ ವ್ಯವಸ್ಥೆ ಮಾತ್ರ, ಕೃಷಿ ಖಾತರಿಯಲ್ಲ. ಸ್ಥಳೀಯ ಹವಾಮಾನ ಹಾಗೂ ತೋಟದ ಸ್ಥಿತಿಯನ್ನು ಪರಿಶೀಲಿಸಿ ಕ್ರಮ ಕೈಗೊಳ್ಳಿ.
+    </span>
+  </aside>
+
+  <!-- MAIN VIEWPORT -->
+  <main class="main-content">
+
+    <!-- ==================== TAB 1: DASHBOARD ==================== -->
+    <div id="tabDashboard" class="tab-pane active">
+
+      <!-- LOCATION CARD -->
+      <section class="card" aria-labelledby="locTitle">
+        <h2 id="locTitle" class="card-title">
+          <span>📍</span> <span data-i18n="location.title">ನಿಮ್ಮ ತೋಟದ ಸ್ಥಳ</span>
+        </h2>
+        <div id="coordsDisplay" class="card-subtitle" style="font-weight:600;color:var(--c-deep-green);">
+          Thirthahalli, Shivamogga (13.6934°N, 75.2427°E)
+        </div>
+
+        <div class="location-bar">
+          <div class="search-input-wrapper">
+            <span class="search-icon-pos">🔍</span>
+            <input type="text" id="villageSearchInput" class="search-input" 
+                   data-i18n="location.search_placeholder"
+                   placeholder="ಗ್ರಾಮ ಅಥವಾ ತಾಲೂಕು ಹುಡುಕಿ (ಉದಾ: ತೀರ್ಥಹಳ್ಳಿ, ಶೃಂಗೇರಿ)..." autocomplete="off">
+            <div id="villageSuggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:#FFF;border:1px solid #CCC;border-radius:8px;z-index:100;box-shadow:0 4px 12px rgba(0,0,0,0.15);"></div>
+          </div>
+          <button id="gpsBtn" class="btn-gps" type="button">
+            📍 <span data-i18n="location.use_my_location">ನನ್ನ ಸ್ಥಳ ಬಳಸಿ (GPS)</span>
+          </button>
+        </div>
+
+        <div id="plantationMap"></div>
+        <div class="map-hint">
+          <span>👆</span> <span data-i18n="location.drag_hint">ತೋಟದ ಸ್ಥಳ ಬದಲಾಯಿಸಲು ಮ್ಯಾಪ್ ಪಿನ್ ಅನ್ನು ಸರಿಸಿ</span>
+        </div>
+      </section>
+
+      <!-- TODAY'S ACTION CARD -->
+      <section id="todayActionCard" class="card action-card monitor" aria-labelledby="actionTitle">
+        <div class="action-header">
+          <h2 id="actionTitle" class="card-title">
+            <span>⚡</span> <span data-i18n="today_action.title">ಇಂದಿನ ಶಿಫಾರಸು</span>
+          </h2>
+          <button id="listenActionBtn" class="btn-listen" type="button">
+            🔊 <span data-i18n="today_action.listen_btn">ಕೇಳಿ (ಆಡಿಯೋ)</span>
+          </button>
+        </div>
+        <div style="margin-bottom:8px;">
+          <span id="actionBadge" class="action-badge monitor">ಗಮನಿಸಿ</span>
+        </div>
+        <div id="actionText" class="action-body-text">
+          ಹವಾಮಾನ ಗಮನಿಸಿ. ಬೆಳಿಗ್ಗೆ ಬಿಸಿಲಿದ್ದರೆ ಮಾತ್ರ ಸಿಂಪಡಿಸಿ.
+        </div>
+        <div id="actionRuleAttr" class="action-rule-attribution">
+          <strong>Source:</strong> Open-Meteo API & config/risk_rules.json
+        </div>
+      </section>
+
+      <!-- CONDUCIVE-CONDITIONS GAUGE CARD -->
+      <section class="card" aria-labelledby="gaugeTitle">
+        <h2 id="gaugeTitle" class="card-title">
+          <span>🛡️</span> <span data-i18n="risk_gauge.title">ಹವಾಮಾನ ಅನುಕೂಲಕರ ಸೂಚ್ಯಂಕ</span>
+        </h2>
+        <div class="card-subtitle" data-i18n="risk_gauge.subtitle">
+          ಹವಾಮಾನ ಅನುಕೂಲಕರ ಸೂಚ್ಯಂಕ (ಅಂದಾಜು — ಕ್ಷೇತ್ರ ಪರಿಶೀಲನೆ ಬಾಕಿ; 0 - 100)
+        </div>
+        <div class="form-hint">CPCRI documents qualitative triggers (cool, humid, alternating rain/sun). Numeric thresholds and this index are heuristic; it is not a disease probability.</div>
+
+        <div class="gauge-grid">
+          <div id="gaugeContainer" class="gauge-canvas-box">
+            <!-- Rendered by app.js -->
+          </div>
+          <div id="riskFactorsContainer" class="factors-list">
+            <!-- Factors populated by app.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SPRAY SCHEDULE (CPCRI/KAU GUIDELINES) -->
+      <section class="card" aria-labelledby="scheduleTitle">
+        <h2 id="scheduleTitle" class="card-title">
+          <span>📅</span> <span data-i18n="schedule.title">ಸಿಂಪರಣೆ ವೇಳಾಪಟ್ಟಿ (CPCRI ಮಾರ್ಗಸೂಚಿ)</span>
+        </h2>
+        <div class="card-subtitle">
+          1% ಬೋರ್ಡೋ ದ್ರಾವಣ: ಮುಂಗಾರು ಪೂರ್ವ, ೪೦ ದಿನಗಳ ನಂತರ, ಮತ್ತು ದೀರ್ಘ ಮಳೆಗಾಲದ ೩ನೇ ಸಿಂಪರಣೆ.
+        </div>
+        <div id="scheduleTracker" class="schedule-tracker">
+          <!-- Rendered by app.js -->
+        </div>
+      </section>
+
+      <!-- 7-DAY SPRAY TIMELINE (DAY CHIPS) -->
+      <section class="card" aria-labelledby="timelineTitle">
+        <h2 id="timelineTitle" class="card-title">
+          <span>🌦️</span> <span data-i18n="spray_timeline.title">ಮುಂದಿನ ೭ ದಿನಗಳ ಸಿಂಪರಣೆ ಕಿಟಕಿ</span>
+        </h2>
+        <div class="card-subtitle" data-i18n="spray_timeline.subtitle">
+          ಔಷಧಿ ಒಣಗಲು ೪ ಗಂಟೆ ಮಳೆರಹಿತ ಸಮಯ ಅಗತ್ಯ (ಪ್ರತಿ ದಿನದ ವಿವರ ತಿಳಿಯಲು ಒತ್ತಿ)
+        </div>
+        <div id="sprayTimelineContainer" class="timeline-scroll">
+          <!-- Rendered by app.js -->
+        </div>
+      </section>
+
+      <!-- 7-DAY WEATHER TREND CHART -->
+      <section class="card" aria-labelledby="chartTitle">
+        <h2 id="chartTitle" class="card-title">
+          <span>📊</span> <span data-i18n="chart.title">೭ ದಿನಗಳ ಮಳೆ & ಆರ್ದ್ರತೆಯ ಗ್ರಾಫ್</span>
+        </h2>
+        <div class="chart-container">
+          <canvas id="weatherTrendChart"></canvas>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ==================== TAB 2: COST & PROFIT PLANNER ==================== -->
+    <div id="tabProfit" class="tab-pane">
+      <section class="card">
+        <h2 class="card-title">
+          <span>💰</span> <span data-i18n="profit_planner.title">ವೆಚ್ಚ & ಲಾಭದ ಲೆಕ್ಕಾಚಾರ</span>
+        </h2>
+        <div class="card-subtitle">
+          <span style="background:var(--c-tender-coconut-light);padding:2px 8px;border-radius:4px;color:#7A5200;font-weight:600;" data-i18n="profit_planner.reference_tag">
+            ಆಕರ ಮೌಲ್ಯಗಳು (ತಿದ್ದುಪಡಿ ಮಾಡಬಹುದು)
+          </span> 
+          - Deccan Herald / Krishikosh / CPCRI ಅಧ್ಯಯನಗಳ ಆಧಾರಿತ
+        </div>
+
+        <form id="economicsForm" class="form-grid" onsubmit="event.preventDefault();">
+          <div class="form-group" style="grid-column:1 / -1;">
+            <label class="form-label" for="costPresetSelect">Regional reference preset (all values remain editable)</label>
+            <select id="costPresetSelect" class="form-select"><option value="">Custom values</option></select>
+            <span id="presetCitation" class="form-hint">Reference values — edit to match your plantation</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inputAcres" data-i18n="profit_planner.acres">ತೋಟದ ವಿಸ್ತೀರ್ಣ (ಎಕರೆ)</label>
+            <input type="number" step="0.25" min="0.25" id="inputAcres" class="form-input" value="1.0">
+            <span class="form-hint">Reference: 1 to 5 acres for small plantation</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inputTreesPerAcre" data-i18n="profit_planner.trees_per_acre">ಎಕರೆಗೆ ಮರಗಳ ಸಂಖ್ಯೆ</label>
+            <input type="number" id="inputTreesPerAcre" class="form-input" value="575">
+            <span class="form-hint">Source: Deccan Herald (550-600 standard)</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inputWage" data-i18n="profit_planner.labour_wage">ದೈನಂದಿನ ಕೂಲಿ (₹)</label>
+            <input type="number" id="inputWage" class="form-input" value="650">
+            <span class="form-hint">Prevailing Malnad wage (₹600-800)</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inputRounds" data-i18n="profit_planner.spray_rounds">ಸಿಂಪರಣೆ ಸುತ್ತುಗಳು</label>
+            <input type="number" id="inputRounds" class="form-input" value="3">
+            <span class="form-hint">Standard KAU/CPCRI: 3 rounds per season</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inputSprayCost" data-i18n="profit_planner.spray_cost_round">ಪ್ರತಿ ಸುತ್ತಿನ ಸಿಂಪರಣೆ ವೆಚ್ಚ (₹)</label>
+            <input type="number" id="inputSprayCost" class="form-input" value="10350">
+            <span class="form-hint">Deccan Herald: ~₹18/tree medicine + labour</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inputManure" data-i18n="profit_planner.manure_cost">ಗೊಬ್ಬರ & ಪೋಷಕಾಂಶಗಳ ವೆಚ್ಚ (₹/ಎಕರೆ)</label>
+            <input type="number" id="inputManure" class="form-input" value="35000">
+            <span class="form-hint">Neem cake, compost, micronutrients</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inputHarvest" data-i18n="profit_planner.harvest_cost">ಕೊಯ್ಲು & ಸುಲಿಯುವ ಕೂಲಿ (₹/ಎಕರೆ)</label>
+            <input type="number" id="inputHarvest" class="form-input" value="45000">
+            <span class="form-hint">Plucking climbers, dehusking, drying</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inputYield" data-i18n="profit_planner.expected_yield">ನಿರೀಕ್ಷಿತ ಇಳುವರಿ (ಕೆ.ಜಿ ಒಣ ಅಡಿಕೆ)</label>
+            <input type="number" id="inputYield" class="form-input" value="2730">
+            <span class="form-hint">Deccan Herald: 4.5 - 5 kg per tree (~27 quintals/acre)</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="mandiSelect" data-i18n="profit_planner.select_mandi">ಮಾರುಕಟ್ಟೆ ಆಯ್ಕೆಮಾಡಿ (Agmarknet)</label>
+            <select id="mandiSelect" class="form-select"></select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inputSellingPrice" data-i18n="profit_planner.mandi_price">Live / Custom Mandi Rate (₹/qtl)</label>
+            <input type="number" id="inputSellingPrice" class="form-input" value="44000">
+            <span id="mandiPriceStatus" class="form-hint">Choose a verified reference or enter today’s local mandi rate.</span>
+          </div>
+
+          <div style="grid-column: 1 / -1; display:flex; gap:10px; margin-top:8px;">
+            <button id="calcEconomicsBtn" class="btn-primary" type="button" data-i18n="profit_planner.calculate_btn">
+              📊 ಲೆಕ್ಕ ಹಾಕಿ
+            </button>
+            <button id="saveScenarioBtn" class="btn-secondary" type="button" data-i18n="profit_planner.save_scenario_btn">
+              💾 ಯೋಜನೆ ಉಳಿಸಿ
+            </button>
+          </div>
+        </form>
+
+        <!-- RESULTS BOX -->
+        <div id="profitResultsBox" class="profit-result-box" style="display:none;">
+          <h3 style="color:var(--c-deep-green);margin-bottom:12px;font-size:18px;">📈 ಹಣಕಾಸು ಸಾರಾಂಶ (Financial Summary)</h3>
+          
+          <div class="profit-stat-row">
+            <div class="profit-stat-card">
+              <div class="profit-stat-title" data-i18n="profit_planner.total_cost">ಒಟ್ಟು ಬೇಸಾಯ ವೆಚ್ಚ</div>
+              <div id="resTotalCost" class="profit-stat-val">₹0</div>
+            </div>
+            <div class="profit-stat-card">
+              <div class="profit-stat-title" data-i18n="profit_planner.total_revenue">ಒಟ್ಟು ಆದಾಯ</div>
+              <div id="resRevenue" class="profit-stat-val">₹0</div>
+            </div>
+          </div>
+
+          <div class="profit-stat-row">
+            <div class="profit-stat-card">
+              <div class="profit-stat-title" data-i18n="profit_planner.net_profit">ನಿವ್ವಳ ಲಾಭ</div>
+              <div id="resNetProfit" class="profit-stat-val">₹0</div>
+            </div>
+            <div class="profit-stat-card">
+              <div class="profit-stat-title" data-i18n="profit_planner.break_even">ಖರ್ಚು ಸರಿದೂಗಿಸುವ ದರ (Break-even)</div>
+              <div id="resBreakEven" class="profit-stat-val" style="font-size:19px;">₹0 /qtl</div>
+            </div>
+          </div>
+
+          <div id="resInsightText" class="insight-callout">
+            <!-- Plain language insight -->
+          </div>
+
+          <div style="margin-top:20px;">
+            <h4 style="font-size:15px;margin-bottom:10px;color:var(--c-deep-green);">ವೆಚ್ಚಗಳ ಹಂಚಿಕೆ (Cost Breakdown)</h4>
+            <div style="height:220px;position:relative;">
+              <canvas id="costBreakdownChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== TAB 3: FARM DIARY ==================== -->
+    <div id="tabDiary" class="tab-pane">
+      <section class="card">
+        <h2 class="card-title">
+          <span>📖</span> <span data-i18n="farm_diary.title">ತೋಟದ ದಿನಚರಿ & ಘಟನೆಗಳ ದಾಖಲೆ</span>
+        </h2>
+        <div class="card-subtitle" data-i18n="farm_diary.subtitle">
+          ಕೊಳೆರೋಗ, ಸಿಂಪರಣೆ, ಕೊಯ್ಲು ಮತ್ತು ವಾನರ ಕಾಟ ದಾಖಲಿಸಿ (Open-Meteo ಆರ್ಕೈವ್ ಜೊತೆ ಮೌಲ್ಯೀಕರಣಕ್ಕೆ ಬಳಸಲಾಗುತ್ತದೆ)
+        </div>
+
+        <form id="diaryForm" class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="diaryDate" data-i18n="farm_diary.date">ದಿನಾಂಕ</label>
+            <input type="date" id="diaryDate" class="form-input" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="diaryEventType" data-i18n="farm_diary.event_type">ಘಟನೆ</label>
+            <select id="diaryEventType" class="form-select">
+              <option value="fruit_rot_seen">ಕೊಳೆರೋಗ ಕಂಡುಬಂದಿದೆ (Fruit Rot Seen)</option>
+              <option value="sprayed">ಔಷಧ ಸಿಂಪಡಿಸಲಾಗಿದೆ (Fungicide Sprayed)</option>
+              <option value="harvest">ಅಡಿಕೆ ಕೊಯ್ಲು (Harvest)</option>
+              <option value="monkey_damage">ಮಂಗಗಳ ಹಾವಳಿ (Monkey Damage)</option>
+              <option value="fertilizer">ಗೊಬ್ಬರ ಹಾಕಲಾಗಿದೆ (Fertilizer)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="diarySeverity" data-i18n="farm_diary.severity">ತೀವ್ರತೆ</label>
+            <select id="diarySeverity" class="form-select">
+              <option value="None">ಸಾಮಾನ್ಯ / ಇಲ್ಲ (None)</option>
+              <option value="Low">ಕಡಿಮೆ (Low)</option>
+              <option value="Moderate">ಮಧ್ಯಮ (Moderate)</option>
+              <option value="Severe">ತೀವ್ರ (Severe)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="diaryAffectedTrees" data-i18n="farm_diary.affected_trees">ಬಾಧಿತ ಮರಗಳು</label>
+            <input type="number" id="diaryAffectedTrees" class="form-input" value="0">
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label" for="diaryNotes" data-i18n="farm_diary.notes">ವಿವರ / ಟಿಪ್ಪಣಿ</label>
+            <input type="text" id="diaryNotes" class="form-input" placeholder="ಉದಾ: ಕೆಳತೋಟದ ನಾಲೆಯ ಬದಿಯ ಸಾಲಿನಲ್ಲಿ ಕಾಯಿ ಉದುರುವುದು ಆರಂಭವಾಗಿದೆ...">
+          </div>
+
+          <div style="grid-column: 1 / -1; display:flex; gap:10px;">
+            <button class="btn-primary" type="submit" data-i18n="farm_diary.save_entry">
+              ✏️ ದಾಖಲಿಸಿ
+            </button>
+            <button id="exportDiaryCsvBtn" class="btn-secondary" type="button" data-i18n="farm_diary.export_csv_btn">
+              📥 CSV ರಫ್ತು ಮಾಡಿ
+            </button>
+          </div>
+        </form>
+
+        <div class="diary-table-wrapper">
+          <table class="diary-table">
+            <thead>
+              <tr>
+                <th data-i18n="farm_diary.date">ದಿನಾಂಕ</th>
+                <th data-i18n="farm_diary.event_type">ಘಟನೆ</th>
+                <th data-i18n="farm_diary.severity">ತೀವ್ರತೆ</th>
+                <th data-i18n="farm_diary.affected_trees">ಮರಗಳು</th>
+                <th data-i18n="farm_diary.notes">ಟಿಪ್ಪಣಿ</th>
+              </tr>
+            </thead>
+            <tbody id="diaryTableBody">
+              <!-- Rendered by app.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== TAB 4: ASK MITRA (RAG) ==================== -->
+    <div id="tabAsk" class="tab-pane">
+      <section class="card">
+        <h2 class="card-title">
+          <span>🤖</span> <span data-i18n="ask_mitra.title">ಕೃಷಿ ಸಲಹೆಗಾರ (Ask Mitra)</span>
+        </h2>
+        <div class="card-subtitle" data-i18n="ask_mitra.subtitle">
+          CPCRI, UAS, KAU ಅಧಿಕೃತ ದಾಖಲೆಗಳಿಂದ ಮಾತ್ರ ನೇರ ಉತ್ತರ (ಊಹಿಸಿ ಉತ್ತರಿಸಲಾಗುವುದಿಲ್ಲ)
+        </div>
+
+        <div class="ask-input-box">
+          <input type="text" id="ragQuestionInput" class="ask-input" 
+                 data-i18n="ask_mitra.input_placeholder"
+                 placeholder="ಕೊಳೆರೋಗದ ಬಗ್ಗೆ ಪ್ರಶ್ನೆ ಕೇಳಿ (ಉದಾ: ೧% ಬೋರ್ಡೋ ದ್ರಾವಣ ಹೇಗೆ ತಯಾರಿಸುವುದು?)...">
+          <button id="voiceInputBtn" class="btn-mic" type="button" title="Speak question">
+            🎙️
+          </button>
+          <button id="askMitraBtn" class="btn-primary" type="button" data-i18n="ask_mitra.ask_btn">
+            ಕೇಳಿ
+          </button>
+        </div>
+
+        <div class="sample-questions-wrapper" style="margin-bottom:14px;">
+          <div style="font-size:13px;font-weight:600;color:var(--c-text-muted);margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+            <span>💡</span> <span id="sampleQuestionsTitle" data-i18n="ask_mitra.sample_title">ಮಾದರಿ ಪ್ರಶ್ನೆಗಳು (ಒತ್ತಿ ತಕ್ಷಣ ಕೇಳಿ):</span>
+          </div>
+          <div id="sampleQuestionChips" class="sample-chips-container" style="display:flex;flex-wrap:wrap;gap:8px;">
+            <!-- Populated dynamically by app.js based on selected language -->
+          </div>
+        </div>
+
+        <div id="ragResponseContainer">
+          <!-- RAG response rendered here -->
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- HOURLY DETAIL MODAL -->
+  <div id="hourlyModal" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="modalDateTitle" style="color:var(--c-deep-green);font-size:18px;">Hourly Forecast</h3>
+        <button id="closeModalBtn" class="btn-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div id="hourlyModalContent" class="hourly-grid">
+        <!-- Populated by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="app-footer">
+    <div><strong>ತೋಟ ಮಿತ್ರ (Thota Mitra)</strong> &copy; 2026 | SEVA 2026 Innovation Challenge Entry</div>
+    <div style="margin-top:6px;font-size:12.5px;opacity:0.85;">
+      Built with Open-Meteo Weather API &bull; CPCRI / UAS Agronomy Guidance &bull; Dedicated to Malnad & Coastal Karnataka Farmers
+    </div>
+  </footer>
+
+  <!-- App Controller -->
+  <script src="/js/i18n.js"></script>
+  <script src="/js/app.js"></script>
+  <script>
+    // Set default date for diary
+    document.addEventListener('DOMContentLoaded', () => {
+      const d = document.getElementById('diaryDate');
+      if (d) d.value = new Date().toISOString().substring(0, 10);
+    });
+  </script>
+</body>
+</html>

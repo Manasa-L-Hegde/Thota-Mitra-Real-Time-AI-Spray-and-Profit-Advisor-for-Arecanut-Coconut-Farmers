@@ -1,0 +1,7 @@
+REFERENCE SHEET — Frontiers in Plant Science, fruit-rot timing literature
+Source: Frontiers in Plant Science publication(s) on timing of fungicide application against fruit rot. Structured reference note; consult the original paper for methods and limitations.
+
+TIMING INTERPRETATION
+- Timing relative to monsoon onset is important; a prophylactic application before sustained monsoon exposure is the documented scheduling principle.
+- In patchy-rain seasons, fruit-rot initiation is commonly discussed around 40–50 days after the first monsoon rain. This is an outbreak-monitoring window, not a deterministic prediction.
+- The application does not infer chemical efficacy or disease probability from weather alone.

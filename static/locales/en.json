@@ -1,0 +1,153 @@
+{
+  "_meta": {
+    "locale": "en",
+    "language": "English",
+    "version": "1.0.0"
+  },
+  "app": {
+    "title": "Thota Mitra",
+    "subtitle": "Weather & Koleroga Decision Support for Arecanut and Coconut Farmers",
+    "tagline": "Precision weather, dependable plantations",
+    "offline_badge": "Offline Mode",
+    "online_badge": "Live Synced",
+    "disclaimer_banner": "Notice: Decision support system only, not an agricultural guarantee. Always confirm local sky and field conditions before spraying."
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "spray_planner": "Spray Planner",
+    "profit_planner": "Cost & Profit",
+    "farm_diary": "Farm Diary",
+    "ask_mitra": "Ask Mitra"
+  },
+  "crops": {
+    "arecanut": "Arecanut",
+    "coconut": "Coconut",
+    "select_crop": "Select Crop"
+  },
+  "location": {
+    "title": "Plantation Location",
+    "search_placeholder": "Search village or taluk (e.g. Thirthahalli, Sringeri)...",
+    "use_my_location": "Use My Location (GPS)",
+    "drag_hint": "Drag map pin to adjust plantation coordinates",
+    "map_click_hint": "Click anywhere on the Karnataka map for live weather at that exact point",
+    "live_weather": "Open-Meteo Live API",
+    "nominatim_search": "Search any Karnataka village or taluk",
+    "lat": "Latitude",
+    "lon": "Longitude",
+    "district": "District"
+  },
+  "risk_gauge": {
+    "title": "Conducive-Conditions Index",
+    "subtitle": "Atmospheric favorability for fungal sporulation (0 - 100)",
+    "low": "Low Conduciveness (Safe)",
+    "medium": "Moderate Conduciveness (Watch)",
+    "high": "High Conduciveness (Urgent)",
+    "consecutive_rain": "Consecutive Rainy Days",
+    "rh": "Relative Humidity",
+    "cloud": "Cloud Cover",
+    "temp": "Temperature",
+    "rules_link": "View Rule Details"
+  },
+  "today_action": {
+    "title": "Today's Action",
+    "listen_btn": "Listen (Audio)",
+    "speaking": "Playing Audio...",
+    "voice_unavailable": "Kannada voice synthesizer is not supported on this device. Please read the advisory text below.",
+    "spray_safe": "Great day to spray! Calm wind and dry window forecast.",
+    "spray_avoid": "Avoid spraying today! Rain or high wind will wash away fungicide.",
+    "spray_monitor": "Monitor weather closely. Spray only if morning sunshine holds."
+  },
+  "schedule": {
+    "title": "Spray Schedule (CPCRI Protocol)",
+    "round_1": "Round 1: Pre-monsoon Prophylactic (Late May / Early June)",
+    "round_2": "Round 2: 40-Day Follow-Up (July monsoon break)",
+    "round_3": "Round 3: Extended Monsoon (Late August / September)",
+    "last_sprayed": "Last Sprayed Date",
+    "days_elapsed": "Days Elapsed",
+    "update_spray_btn": "Log Spray Date"
+  },
+  "spray_timeline": {
+    "title": "Next 7 Days Spray Window Planner",
+    "subtitle": "4-hour continuous dry window required for Bordeaux film adherence",
+    "good": "Good to Spray",
+    "avoid": "Avoid",
+    "monitor": "Monitor",
+    "tap_hint": "Tap any day to view hourly forecast breakdown",
+    "dry_streak": "Dry Window"
+  },
+  "chart": {
+    "title": "7-Day Rain & Humidity Trend",
+    "rain_mm": "Rain (mm)",
+    "humidity_pct": "Humidity (%)",
+    "wind_kmh": "Wind Speed (km/h)"
+  },
+  "hourly_modal": {
+    "title": "Hourly Weather Detail",
+    "time": "Time",
+    "temp": "Temp",
+    "rain": "Rain",
+    "rh": "Humidity",
+    "wind": "Wind",
+    "close": "Close"
+  },
+  "profit_planner": {
+    "title": "Cost & Profitability Planner",
+    "subtitle": "Enter your plantation figures (prefilled with published research averages)",
+    "reference_tag": "Reference values (editable)",
+    "acres": "Plantation Area (Acres)",
+    "trees_per_acre": "Bearing Trees Per Acre",
+    "labour_wage": "Labour Wage Per Day (₹)",
+    "spray_rounds": "Spray Rounds",
+    "spray_cost_round": "Cost Per Spray Round (₹)",
+    "manure_cost": "Manure & Fertilizer Cost (₹/Acre)",
+    "harvest_cost": "Harvest & Dehusking Labour (₹/Acre)",
+    "expected_yield": "Expected Yield (kg Dry Chali)",
+    "mandi_price": "Selling Price (₹ per Quintal)",
+    "select_mandi": "Select Mandi Price",
+    "live_custom_rate": "Live / Custom Mandi Rate (₹/qtl)",
+    "verified_reference": "Verified Public Reference (ACROP/Agmarknet 2026)",
+    "custom_rate_required": "No live price reported — enter today’s local mandi rate",
+    "calculate_btn": "Calculate Economics",
+    "save_scenario_btn": "Save Scenario",
+    "total_cost": "Total Cultivation Cost",
+    "cost_per_acre": "Cost Per Acre",
+    "total_revenue": "Total Revenue",
+    "net_profit": "Estimated Net Profit",
+    "break_even": "Break-Even Price",
+    "per_qtl": "/Quintal",
+    "per_kg": "/kg"
+  },
+  "farm_diary": {
+    "title": "Farm Diary & Outbreak Log",
+    "subtitle": "Log fruit rot sightings, spray rounds, harvests, and monkey damages",
+    "add_entry_btn": "Add Log Entry",
+    "export_csv_btn": "Export CSV",
+    "date": "Date",
+    "event_type": "Event",
+    "severity": "Severity",
+    "affected_trees": "Affected Trees",
+    "notes": "Notes",
+    "events": {
+      "fruit_rot_seen": "Fruit Rot Observed (Koleroga)",
+      "sprayed": "Fungicide Sprayed",
+      "harvest": "Arecanut Harvest",
+      "monkey_damage": "Monkey Damage",
+      "fertilizer": "Fertilizer / Manure Applied"
+    },
+    "save_entry": "Save Entry"
+  },
+  "ask_mitra": {
+    "title": "Ask Mitra (Agronomic Advisory)",
+    "subtitle": "Answers strictly grounded in CPCRI, UAS, and KAU research publications",
+    "input_placeholder": "Ask a question about Koleroga (e.g. How to prepare 1% Bordeaux mixture?)...",
+    "ask_btn": "Ask Mitra",
+    "mic_btn": "Voice Input",
+    "sample_title": "Suggested Questions (click to ask immediately):",
+    "sources_label": "Cited Documents",
+    "refusal_note": "If information is not verified in official documents, the assistant strictly refuses to speculate."
+  },
+  "karnataka_belts": {
+    "malnad": "Malnad Belt", "coastal": "Coastal Belt (Karavali)", "maidan": "Maidan / Central & Southern Belt",
+    "markets": "Karnataka APMCs: Sirsi, Shivamogga, Sagar, Channagiri, Davanagere, Puttur, Sullia, Karkala, Udupi, Tumakuru, Tiptur, Arsikere, Kadur, Birur, Chitradurga, Bhadravathi, Yellapur, Siddapura and Kumta"
+  }
+}

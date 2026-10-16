@@ -1,0 +1,226 @@
+{
+  "_meta": {
+    "title": "Thota Mitra Public Reference Data & Sourced Defaults",
+    "status": "REFERENCE_VALUES_EDIT_TO_YOUR_OWN",
+    "updated_at": "2026-10-10",
+    "description": "Every default value is sourced and dated from published agronomy studies, university packages of practices, or official market feeds. Farmers can freely edit all values.",
+    "user_editable": true,
+    "user_editable_label": "Reference values — edit to match your plantation",
+    "disclaimer": "Reference values from published literature vary by more than 3x across regions. Not an agricultural guarantee; customize to your plantation."
+  },
+  "plantation_defaults": {
+    "trees_per_acre": {
+      "default": 575,
+      "min": 500,
+      "max": 650,
+      "unit": "trees/acre",
+      "region": "Karnataka (Malnad / Coastal)",
+      "year": 2024,
+      "user_editable": true,
+      "user_editable_label": "Reference values — edit to match your plantation",
+      "source": "Deccan Herald (CPCRI-based report), 550-600 trees per acre standard spacing (2.7m x 2.7m)"
+    },
+    "yield_per_tree_kg": {
+      "default": 4.75,
+      "min": 3.5,
+      "max": 6.0,
+      "unit": "kg dry chali/tree",
+      "region": "Karnataka",
+      "year": 2024,
+      "user_editable": true,
+      "user_editable_label": "Reference values — edit to match your plantation",
+      "source": "Deccan Herald (CPCRI-based report), 4.5-5.0 kg dry nut per bearing palm"
+    },
+    "spray_cost_per_tree_round": {
+      "default": 18.0,
+      "min": 15.0,
+      "max": 25.0,
+      "unit": "₹/tree/round",
+      "region": "Karnataka",
+      "year": 2024,
+      "user_editable": true,
+      "user_editable_label": "Reference values — edit to match your plantation",
+      "source": "Deccan Herald report (Medicine copper sulphate/lime plus climber labour ~ ₹18/tree)"
+    },
+    "labour_cost_per_day": {
+      "default": 650.0,
+      "min": 500.0,
+      "max": 900.0,
+      "unit": "₹/day",
+      "region": "Shivamogga / Malnad Karnataka",
+      "year": 2025,
+      "user_editable": true,
+      "user_editable_label": "Reference values — edit to match your plantation",
+      "source": "Local Malnad field prevailing wage; skilled tree climber wages ₹800-1000/day"
+    },
+    "labour_share_of_total_cost_pct": {
+      "default": 75.0,
+      "unit": "%",
+      "region": "Kasaragod, Kerala / Coastal Karnataka",
+      "year": 2023,
+      "user_editable": true,
+      "user_editable_label": "Reference values — edit to match your plantation",
+      "source": "Krishikosh study, Kasaragod arecanut economics (about 75% labour share; production cost ~₹150/kg)"
+    },
+    "annual_cultivation_cost_per_acre": {
+      "default": 160000.0,
+      "reference_range": {
+        "low_malnad_traditional": 80000.0,
+        "high_nontraditional_plains": 283000.0
+      },
+      "unit": "₹/acre/year",
+      "user_editable": true,
+      "user_editable_label": "Reference values — edit to match your plantation",
+      "sources": [
+        "Traditional Malnad: Deccan Herald report (₹80,000/acre, ₹140-150/tree)",
+        "Non-traditional plains: Krishikosh thesis 2021-22 for Tumkur & Ramanagara (₹2.83 lakh/acre)"
+      ]
+    }
+  },
+  "karnataka_location_presets": [
+    {"belt":"Malnad","name_en":"Sringeri","name_kn":"ಶೃಂಗೇರಿ","district_en":"Chikkamagaluru","district_kn":"ಚಿಕ್ಕಮಗಳೂರು","lat":13.4194,"lon":75.2570}, {"belt":"Malnad","name_en":"Koppa","name_kn":"ಕೊಪ್ಪ","district_en":"Chikkamagaluru","district_kn":"ಚಿಕ್ಕಮಗಳೂರು","lat":13.5304,"lon":75.3635}, {"belt":"Malnad","name_en":"Thirthahalli","name_kn":"ತೀರ್ಥಹಳ್ಳಿ","district_en":"Shivamogga","district_kn":"ಶಿವಮೊಗ್ಗ","lat":13.6934,"lon":75.2427}, {"belt":"Malnad","name_en":"Sagar","name_kn":"ಸಾಗರ","district_en":"Shivamogga","district_kn":"ಶಿವಮೊಗ್ಗ","lat":14.1670,"lon":75.0298}, {"belt":"Malnad","name_en":"Hosanagara","name_kn":"ಹೊಸನಗರ","district_en":"Shivamogga","district_kn":"ಶಿವಮೊಗ್ಗ","lat":13.9130,"lon":75.0650}, {"belt":"Malnad","name_en":"Sirsi","name_kn":"ಶಿರಸಿ","district_en":"Uttara Kannada","district_kn":"ಉತ್ತರ ಕನ್ನಡ","lat":14.6195,"lon":74.8354}, {"belt":"Malnad","name_en":"Siddapura","name_kn":"ಸಿದ್ದಾಪುರ","district_en":"Uttara Kannada","district_kn":"ಉತ್ತರ ಕನ್ನಡ","lat":14.3430,"lon":74.8940}, {"belt":"Malnad","name_en":"Yellapur","name_kn":"ಯಲ್ಲಾಪುರ","district_en":"Uttara Kannada","district_kn":"ಉತ್ತರ ಕನ್ನಡ","lat":14.9637,"lon":74.7093}, {"belt":"Malnad","name_en":"Mudigere","name_kn":"ಮೂಡಿಗೆರೆ","district_en":"Chikkamagaluru","district_kn":"ಚಿಕ್ಕಮಗಳೂರು","lat":13.1334,"lon":75.6413},
+    {"belt":"Coastal","name_en":"Mangalore","name_kn":"ಮಂಗಳೂರು","district_en":"Dakshina Kannada","district_kn":"ದಕ್ಷಿಣ ಕನ್ನಡ","lat":12.9141,"lon":74.8560}, {"belt":"Coastal","name_en":"Puttur","name_kn":"ಪುತ್ತೂರು","district_en":"Dakshina Kannada","district_kn":"ದಕ್ಷಿಣ ಕನ್ನಡ","lat":12.7642,"lon":75.1840}, {"belt":"Coastal","name_en":"Sullia","name_kn":"ಸುಳ್ಯ","district_en":"Dakshina Kannada","district_kn":"ದಕ್ಷಿಣ ಕನ್ನಡ","lat":12.5610,"lon":75.3870}, {"belt":"Coastal","name_en":"Bantwal","name_kn":"ಬಂಟ್ವಾಳ","district_en":"Dakshina Kannada","district_kn":"ದಕ್ಷಿಣ ಕನ್ನಡ","lat":12.8900,"lon":75.0340}, {"belt":"Coastal","name_en":"Belthangady","name_kn":"ಬೆಳ್ತಂಗಡಿ","district_en":"Dakshina Kannada","district_kn":"ದಕ್ಷಿಣ ಕನ್ನಡ","lat":13.0030,"lon":75.3010}, {"belt":"Coastal","name_en":"Udupi","name_kn":"ಉಡುಪಿ","district_en":"Udupi","district_kn":"ಉಡುಪಿ","lat":13.3409,"lon":74.7421}, {"belt":"Coastal","name_en":"Kundapura","name_kn":"ಕುಂದಾಪುರ","district_en":"Udupi","district_kn":"ಉಡುಪಿ","lat":13.6268,"lon":74.6917}, {"belt":"Coastal","name_en":"Karkala","name_kn":"ಕಾರ್ಕಳ","district_en":"Udupi","district_kn":"ಉಡುಪಿ","lat":13.2140,"lon":74.9960}, {"belt":"Coastal","name_en":"Kumta","name_kn":"ಕುಮಟಾ","district_en":"Uttara Kannada","district_kn":"ಉತ್ತರ ಕನ್ನಡ","lat":14.4280,"lon":74.4180}, {"belt":"Coastal","name_en":"Honnavar","name_kn":"ಹೊನ್ನಾವರ","district_en":"Uttara Kannada","district_kn":"ಉತ್ತರ ಕನ್ನಡ","lat":14.2800,"lon":74.4450}, {"belt":"Coastal","name_en":"Bhatkal","name_kn":"ಭಟ್ಕಳ","district_en":"Uttara Kannada","district_kn":"ಉತ್ತರ ಕನ್ನಡ","lat":13.9850,"lon":74.5550},
+    {"belt":"Maidan","name_en":"Channagiri","name_kn":"ಚನ್ನಗಿರಿ","district_en":"Davanagere","district_kn":"ದಾವಣಗೆರೆ","lat":14.0230,"lon":75.9250}, {"belt":"Maidan","name_en":"Honnali","name_kn":"ಹೊನ್ನಾಳಿ","district_en":"Davanagere","district_kn":"ದಾವಣಗೆರೆ","lat":14.2390,"lon":75.6450}, {"belt":"Maidan","name_en":"Harihar","name_kn":"ಹರಿಹರ","district_en":"Davanagere","district_kn":"ದಾವಣಗೆರೆ","lat":14.5120,"lon":75.8070}, {"belt":"Maidan","name_en":"Bhadravathi","name_kn":"ಭದ್ರಾವತಿ","district_en":"Shivamogga","district_kn":"ಶಿವಮೊಗ್ಗ","lat":13.8480,"lon":75.7050}, {"belt":"Maidan","name_en":"Tarikere","name_kn":"ತರೀಕೆರೆ","district_en":"Chikkamagaluru","district_kn":"ಚಿಕ್ಕಮಗಳೂರು","lat":13.7070,"lon":75.8130}, {"belt":"Maidan","name_en":"Kadur","name_kn":"ಕಡೂರು","district_en":"Chikkamagaluru","district_kn":"ಚಿಕ್ಕಮಗಳೂರು","lat":13.5530,"lon":76.0120}, {"belt":"Maidan","name_en":"Tumakuru","name_kn":"ತುಮಕೂರು","district_en":"Tumakuru","district_kn":"ತುಮಕೂರು","lat":13.3400,"lon":77.1020}, {"belt":"Maidan","name_en":"Gubbi","name_kn":"ಗುಬ್ಬಿ","district_en":"Tumakuru","district_kn":"ತುಮಕೂರು","lat":13.3120,"lon":76.9410}, {"belt":"Maidan","name_en":"Tiptur","name_kn":"ತಿಪಟೂರು","district_en":"Tumakuru","district_kn":"ತುಮಕೂರು","lat":13.2580,"lon":76.4770}, {"belt":"Maidan","name_en":"Turuvekere","name_kn":"ತುರುವೇಕೆರೆ","district_en":"Tumakuru","district_kn":"ತುಮಕೂರು","lat":13.1630,"lon":76.6660}, {"belt":"Maidan","name_en":"Chikkanayakanahalli","name_kn":"ಚಿಕ್ಕನಾಯಕನಹಳ್ಳಿ","district_en":"Tumakuru","district_kn":"ತುಮಕೂರು","lat":13.4160,"lon":76.6200}, {"belt":"Maidan","name_en":"Arsikere","name_kn":"ಅರಸೀಕೆರೆ","district_en":"Hassan","district_kn":"ಹಾಸನ","lat":13.3140,"lon":76.2560}, {"belt":"Maidan","name_en":"Holenarsipura","name_kn":"ಹೊಳೆನರಸೀಪುರ","district_en":"Hassan","district_kn":"ಹಾಸನ","lat":12.7860,"lon":76.2440}, {"belt":"Maidan","name_en":"Channarayapatna","name_kn":"ಚನ್ನರಾಯಪಟ್ಟಣ","district_en":"Hassan","district_kn":"ಹಾಸನ","lat":12.9070,"lon":76.3900}, {"belt":"Maidan","name_en":"K.R. Pet","name_kn":"ಕೆ.ಆರ್. ಪೇಟೆ","district_en":"Mandya","district_kn":"ಮಂಡ್ಯ","lat":12.6580,"lon":76.4860}, {"belt":"Maidan","name_en":"Maddur","name_kn":"ಮದ್ದೂರು","district_en":"Mandya","district_kn":"ಮಂಡ್ಯ","lat":12.5820,"lon":77.0420}, {"belt":"Maidan","name_en":"Hiriyur","name_kn":"ಹಿರಿಯೂರು","district_en":"Chitradurga","district_kn":"ಚಿತ್ರದುರ್ಗ","lat":13.9440,"lon":76.6180}, {"belt":"Maidan","name_en":"Hosadurga","name_kn":"ಹೊಸದುರ್ಗ","district_en":"Chitradurga","district_kn":"ಚಿತ್ರದುರ್ಗ","lat":13.7960,"lon":76.2860}, {"belt":"Maidan","name_en":"Holalkere","name_kn":"ಹೊಳೆಲ್ಕೆರೆ","district_en":"Chitradurga","district_kn":"ಚಿತ್ರದುರ್ಗ","lat":14.0430,"lon":76.1840}, {"belt":"Maidan","name_en":"Ramanagara","name_kn":"ರಾಮನಗರ","district_en":"Ramanagara","district_kn":"ರಾಮನಗರ","lat":12.7210,"lon":77.2790}
+  ],
+  "karnataka_mandi_catalog": [
+    {"market":"Sirsi APMC","district":"Uttara Kannada","commodity":"Arecanut"}, {"market":"Shivamogga APMC","district":"Shivamogga","commodity":"Arecanut"}, {"market":"Sagar APMC","district":"Shivamogga","commodity":"Arecanut"}, {"market":"Channagiri APMC","district":"Davanagere","commodity":"Arecanut"}, {"market":"Davanagere APMC","district":"Davanagere","commodity":"Arecanut"}, {"market":"Puttur APMC","district":"Dakshina Kannada","commodity":"Arecanut"}, {"market":"Sullia APMC","district":"Dakshina Kannada","commodity":"Arecanut"}, {"market":"Karkala APMC","district":"Udupi","commodity":"Arecanut"}, {"market":"Udupi APMC","district":"Udupi","commodity":"Arecanut"}, {"market":"Tumakuru APMC","district":"Tumakuru","commodity":"Coconut"}, {"market":"Tiptur APMC","district":"Tumakuru","commodity":"Coconut"}, {"market":"Arsikere APMC","district":"Hassan","commodity":"Coconut"}, {"market":"Kadur APMC","district":"Chikkamagaluru","commodity":"Arecanut"}, {"market":"Birur APMC","district":"Chikkamagaluru","commodity":"Arecanut"}, {"market":"Chitradurga APMC","district":"Chitradurga","commodity":"Coconut"}, {"market":"Bhadravathi APMC","district":"Shivamogga","commodity":"Arecanut"}, {"market":"Yellapur APMC","district":"Uttara Kannada","commodity":"Arecanut"}, {"market":"Siddapura APMC","district":"Uttara Kannada","commodity":"Arecanut"}, {"market":"Kumta APMC","district":"Uttara Kannada","commodity":"Coconut"}
+  ],
+  "popular_villages": [
+    {"name_en":"Yalavalli","name_kn":"ಯಲವಳ್ಳಿ","taluk_en":"Kumta Taluk","taluk_kn":"ಕುಮಟಾ ತಾಲ್ಲೂಕು","district_en":"Uttara Kannada","district_kn":"ಉತ್ತರ ಕನ್ನಡ","lat":14.452,"lon":74.481},
+    {"name_en":"Hegde","name_kn":"ಹೆಗಡೆ","taluk_en":"Kumta Taluk","taluk_kn":"ಕುಮಟಾ ತಾಲ್ಲೂಕು","district_en":"Uttara Kannada","district_kn":"ಉತ್ತರ ಕನ್ನಡ","lat":14.477,"lon":74.504},
+    {"name_en":"Divgi","name_kn":"ದಿವಗಿ","taluk_en":"Kumta Taluk","taluk_kn":"ಕುಮಟಾ ತಾಲ್ಲೂಕು","district_en":"Uttara Kannada","district_kn":"ಉತ್ತರ ಕನ್ನಡ","lat":14.461,"lon":74.445},
+    {"name_en":"Mirjan","name_kn":"ಮಿರ್ಜಾನ್","taluk_en":"Kumta Taluk","taluk_kn":"ಕುಮಟಾ ತಾಲ್ಲೂಕು","district_en":"Uttara Kannada","district_kn":"ಉತ್ತರ ಕನ್ನಡ","lat":14.461,"lon":74.413},
+    {"name_en":"Kalabagh","name_kn":"ಕಲಬಾಗ್","taluk_en":"Kumta Taluk","taluk_kn":"ಕುಮಟಾ ತಾಲ್ಲೂಕು","district_en":"Uttara Kannada","district_kn":"ಉತ್ತರ ಕನ್ನಡ","lat":14.445,"lon":74.430},
+    {"name_en":"Vannalli","name_kn":"ವನ್ನಳ್ಳಿ","taluk_en":"Sirsi Taluk","taluk_kn":"ಶಿರಸಿ ತಾಲ್ಲೂಕು","district_en":"Uttara Kannada","district_kn":"ಉತ್ತರ ಕನ್ನಡ","lat":14.666,"lon":74.869},
+    {"name_en":"Gokarna","name_kn":"ಗೋಕರ್ಣ","taluk_en":"Kumta Taluk","taluk_kn":"ಕುಮಟಾ ತಾಲ್ಲೂಕು","district_en":"Uttara Kannada","district_kn":"ಉತ್ತರ ಕನ್ನಡ","lat":14.548,"lon":74.319},
+    {"name_en":"Bankikodla","name_kn":"ಬಂಕಿಕೊಡ್ಲ","taluk_en":"Kumta Taluk","taluk_kn":"ಕುಮಟಾ ತಾಲ್ಲೂಕು","district_en":"Uttara Kannada","district_kn":"ಉತ್ತರ ಕನ್ನಡ","lat":14.507,"lon":74.390},
+    {"name_en":"Sirgunji","name_kn":"ಸಿರಗುಂಜಿ","taluk_en":"Siddapura Taluk","taluk_kn":"ಸಿದ್ದಾಪುರ ತಾಲ್ಲೂಕು","district_en":"Uttara Kannada","district_kn":"ಉತ್ತರ ಕನ್ನಡ","lat":14.365,"lon":74.927},
+    {"name_en":"Holanagadde","name_kn":"ಹೊಲನಗದ್ದೆ","taluk_en":"Kumta Taluk","taluk_kn":"ಕುಮಟಾ ತಾಲ್ಲೂಕು","district_en":"Uttara Kannada","district_kn":"ಉತ್ತರ ಕನ್ನಡ","lat":14.418,"lon":74.449}
+  ],
+  "cost_presets": [
+    {"id": "traditional_belt", "label": "Traditional Belt — CPCRI / Deccan Herald reference", "region": "Malnad / Coastal Karnataka", "year": 2024, "citation": "Deccan Herald CPCRI-based plantation report", "trees_per_acre": 575, "yield_per_tree_kg": 4.75, "spray_cost_per_tree_round": 18, "annual_cost_per_acre": 80000, "user_editable": true, "user_editable_label": "Reference values — edit to match your plantation"},
+    {"id": "nontraditional_belt", "label": "Non-Traditional Belt — Tumkur/Ramanagara", "region": "Tumkur / Ramanagara", "year": "2021-22", "citation": "Krishikosh thesis", "annual_cost_per_acre": 283000, "user_editable": true, "user_editable_label": "Reference values — edit to match your plantation"},
+    {"id": "kasaragod_benchmark", "label": "Kasaragod Benchmark", "region": "Kasaragod", "year": 2023, "citation": "Krishikosh arecanut economics study", "labour_share_pct": 75, "production_cost_per_kg": 150, "user_editable": true, "user_editable_label": "Reference values — edit to match your plantation"}
+  ],
+  "agronomic_spray_schedule": {
+    "standard_schedule_rounds": 3,
+    "fungicide": "1% Bordeaux Mixture (1 kg copper sulphate + 1 kg quicklime in 100 L water) with resin adhesive",
+    "timing_guidance": {
+      "round_1": {
+        "name_en": "Pre-monsoon Prophylactic Spray",
+        "name_kn": "ಮುಂಗಾರು ಪೂರ್ವ ಮುನ್ನೆಚ್ಚರಿಕೆ ಸಿಂಪರಣೆ",
+        "window": "Late May to first week of June (just before monsoon sets in)",
+        "source": "ICAR-CPCRI / Kerala Agricultural University (KAU) Package of Practices"
+      },
+      "round_2": {
+        "name_en": "Second Monsoon Spray (40-Day Follow-up)",
+        "name_kn": "ಎರಡನೇ ಸಿಂಪರಣೆ (೪೦ ದಿನಗಳ ನಂತರ)",
+        "interval_days": 40,
+        "window": "July (during a clear rain break)",
+        "source": "KAU Package of Practices & Frontiers in Plant Science timing study"
+      },
+      "round_3": {
+        "name_en": "Third Spray (Extended Monsoon)",
+        "name_kn": "ಮೂರನೇ ಸಿಂಪರಣೆ (ಮಳೆ ಮುಂದುವರಿದರೆ)",
+        "interval_days": 40,
+        "window": "Late August / September (if monsoon persists)",
+        "source": "KAU Package of Practices"
+      }
+    },
+    "drying_window_requirement_hours": 4,
+    "drying_window_source": "CPCRI guidance: Bordeaux mixture requires 3-4 hours of sunshine/dry weather to adhere firmly to the bunch stalks."
+  },
+  "mandi_prices_reference": [
+    {
+      "market": "Kundapura APMC",
+      "district": "Udupi",
+      "commodity": "Arecanut",
+      "modal_price_per_quintal": 44000.0,
+      "date": "2026",
+      "year": 2026,
+      "region": "Udupi, Karnataka",
+      "citation": "ACROP / Agmarknet, Kundapura APMC (2026)",
+      "source": "Verified Public Reference (ACROP/Agmarknet 2026)",
+      "price_status": "VERIFIED_PUBLIC_REFERENCE",
+      "user_editable": true,
+      "user_editable_label": "Reference values — edit to match your plantation"
+    },
+    {
+      "market": "Mangalore APMC",
+      "district": "Dakshina Kannada",
+      "commodity": "Arecanut",
+      "modal_price_per_quintal": 35367.0,
+      "date": "2026-08-01",
+      "year": 2026,
+      "region": "Dakshina Kannada, Karnataka",
+      "citation": "ACROP / Agmarknet, Mangalore APMC (1 Aug 2026)",
+      "source": "Verified Public Reference (ACROP/Agmarknet 2026)",
+      "price_status": "VERIFIED_PUBLIC_REFERENCE",
+      "user_editable": true,
+      "user_editable_label": "Reference values — edit to match your plantation"
+    },
+    {
+      "market": "Holenarsipura APMC",
+      "district": "Hassan",
+      "commodity": "Arecanut",
+      "modal_price_per_quintal": 20000.0,
+      "date": "2026-06-24",
+      "year": 2026,
+      "region": "Hassan, Karnataka",
+      "citation": "ACROP / Agmarknet, Holenarsipura APMC (24 Jun 2026)",
+      "source": "Verified Public Reference (ACROP/Agmarknet 2026)",
+      "price_status": "VERIFIED_PUBLIC_REFERENCE",
+      "user_editable": true,
+      "user_editable_label": "Reference values — edit to match your plantation"
+    },
+    {
+      "market": "K.R. Pet APMC",
+      "district": "Mandya",
+      "commodity": "Coconut",
+      "modal_price_per_quintal": 17000.0,
+      "date": "2026-06-19",
+      "year": 2026,
+      "region": "Mandya, Karnataka",
+      "citation": "ACROP / Agmarknet, K.R. Pet APMC (19 Jun 2026)",
+      "source": "Verified Public Reference (ACROP/Agmarknet 2026)",
+      "price_status": "VERIFIED_PUBLIC_REFERENCE",
+      "user_editable": true,
+      "user_editable_label": "Reference values — edit to match your plantation"
+    }
+  ],
+  "validation_status": {
+    "mode": "Pilot validation with one plantation planned",
+    "clinical_accuracy_claim": "None. Transparent decision-support based purely on published guidance and Open-Meteo physical parameters."
+  },
+  "karnataka_location_presets": [
+    {"name": "Yalavalli", "name_kn": "ಯಾಲವಳ್ಳಿ", "taluk": "Sirsi", "taluk_kn": "ಶಿರಸಿ", "district": "Uttara Kannada", "district_kn": "ಉತ್ತರ ಕನ್ನಡ", "lat": 14.6542, "lon": 74.8724},
+    {"name": "Hegde", "name_kn": "ಹೆಗಡೆ", "taluk": "Kumta", "taluk_kn": "ಕುಮಟಾ", "district": "Uttara Kannada", "district_kn": "ಉತ್ತರ ಕನ್ನಡ", "lat": 14.4312, "lon": 74.4085},
+    {"name": "Kumta", "name_kn": "ಕುಮಟಾ", "taluk": "Kumta", "taluk_kn": "ಕುಮಟಾ", "district": "Uttara Kannada", "district_kn": "ಉತ್ತರ ಕನ್ನಡ", "lat": 14.4259, "lon": 74.4170},
+    {"name": "Divgi", "name_kn": "ದಿವಗಿ", "taluk": "Kumta", "taluk_kn": "ಕುಮಟಾ", "district": "Uttara Kannada", "district_kn": "ಉತ್ತರ ಕನ್ನಡ", "lat": 14.4530, "lon": 74.4100},
+    {"name": "Mirjan", "name_kn": "ಮಿರ್ಜಾನ್", "taluk": "Kumta", "taluk_kn": "ಕುಮಟಾ", "district": "Uttara Kannada", "district_kn": "ಉತ್ತರ ಕನ್ನಡ", "lat": 14.4850, "lon": 74.4200},
+    {"name": "Kalabagh", "name_kn": "ಕಲಭಾಗ್", "taluk": "Kumta", "taluk_kn": "ಕುಮಟಾ", "district": "Uttara Kannada", "district_kn": "ಉತ್ತರ ಕನ್ನಡ", "lat": 14.4150, "lon": 74.4350},
+    {"name": "Vannalli", "name_kn": "ವನ್ನಳ್ಳಿ", "taluk": "Kumta", "taluk_kn": "ಕುಮಟಾ", "district": "Uttara Kannada", "district_kn": "ಉತ್ತರ ಕನ್ನಡ", "lat": 14.4050, "lon": 74.3950},
+    {"name": "Gokarna", "name_kn": "ಗೋಕರ್ಣ", "taluk": "Kumta", "taluk_kn": "ಕುಮಟಾ", "district": "Uttara Kannada", "district_kn": "ಉತ್ತರ ಕನ್ನಡ", "lat": 14.5479, "lon": 74.3188},
+    {"name": "Sirsi", "name_kn": "ಶಿರಸಿ", "taluk": "Sirsi", "taluk_kn": "ಶಿರಸಿ", "district": "Uttara Kannada", "district_kn": "ಉತ್ತರ ಕನ್ನಡ", "lat": 14.6195, "lon": 74.8354},
+    {"name": "Siddapura", "name_kn": "ಸಿದ್ಧಾಪುರ", "taluk": "Siddapura", "taluk_kn": "ಸಿದ್ಧಾಪುರ", "district": "Uttara Kannada", "district_kn": "ಉತ್ತರ ಕನ್ನಡ", "lat": 14.3394, "lon": 74.8967},
+    {"name": "Yellapur", "name_kn": "ಯಲ್ಲಾಪುರ", "taluk": "Yellapur", "taluk_kn": "ಯಲ್ಲಾಪುರ", "district": "Uttara Kannada", "district_kn": "ಉತ್ತರ ಕನ್ನಡ", "lat": 14.9644, "lon": 74.7122},
+    {"name": "Sringeri", "name_kn": "ಶೃಂಗೇರಿ", "taluk": "Sringeri", "taluk_kn": "ಶೃಂಗೇರಿ", "district": "Chikkamagaluru", "district_kn": "ಚಿಕ್ಕಮಗಳೂರು", "lat": 13.4194, "lon": 75.2570},
+    {"name": "Koppa", "name_kn": "ಕೊಪ್ಪ", "taluk": "Koppa", "taluk_kn": "ಕೊಪ್ಪ", "district": "Chikkamagaluru", "district_kn": "ಚಿಕ್ಕಮಗಳೂರು", "lat": 13.5284, "lon": 75.3588},
+    {"name": "Thirthahalli", "name_kn": "ತೀರ್ಥಹಳ್ಳಿ", "taluk": "Thirthahalli", "taluk_kn": "ತೀರ್ಥಹಳ್ಳಿ", "district": "Shivamogga", "district_kn": "ಶಿವಮೊಗ್ಗ", "lat": 13.6934, "lon": 75.2427},
+    {"name": "Sagar", "name_kn": "ಸಾಗರ", "taluk": "Sagar", "taluk_kn": "ಸಾಗರ", "district": "Shivamogga", "district_kn": "ಶಿವಮೊಗ್ಗ", "lat": 14.1670, "lon": 75.0298},
+    {"name": "Hosanagara", "name_kn": "ಹೊಸನಗರ", "taluk": "Hosanagara", "taluk_kn": "ಹೊಸನಗರ", "district": "Shivamogga", "district_kn": "ಶಿವಮೊಗ್ಗ", "lat": 13.9189, "lon": 75.0689},
+    {"name": "Puttur", "name_kn": "ಪುತ್ತೂರು", "taluk": "Puttur", "taluk_kn": "ಪುತ್ತೂರು", "district": "Dakshina Kannada", "district_kn": "ದಕ್ಷಿಣ ಕನ್ನಡ", "lat": 12.7667, "lon": 75.2000},
+    {"name": "Sullia", "name_kn": "ಸುಳ್ಯ", "taluk": "Sullia", "taluk_kn": "ಸುಳ್ಯ", "district": "Dakshina Kannada", "district_kn": "ದಕ್ಷಿಣ ಕನ್ನಡ", "lat": 12.5593, "lon": 75.3892},
+    {"name": "Bantwal", "name_kn": "ಬಂಟ್ವಾಳ", "taluk": "Bantwal", "taluk_kn": "ಬಂಟ್ವಾಳ", "district": "Dakshina Kannada", "district_kn": "ದಕ್ಷಿಣ ಕನ್ನಡ", "lat": 12.8931, "lon": 75.0347},
+    {"name": "Belthangady", "name_kn": "ಬೆಳ್ತಂಗಡಿ", "taluk": "Belthangady", "taluk_kn": "ಬೆಳ್ತಂಗಡಿ", "district": "Dakshina Kannada", "district_kn": "ದಕ್ಷಿಣ ಕನ್ನಡ", "lat": 13.0031, "lon": 75.2982},
+    {"name": "Kundapura", "name_kn": "ಕುಂದಾಪುರ", "taluk": "Kundapura", "taluk_kn": "ಕುಂದಾಪುರ", "district": "Udupi", "district_kn": "ಉಡುಪಿ", "lat": 13.6268, "lon": 74.6917},
+    {"name": "Udupi", "name_kn": "ಉಡುಪಿ", "taluk": "Udupi", "taluk_kn": "ಉಡುಪಿ", "district": "Udupi", "district_kn": "ಉಡುಪಿ", "lat": 13.3409, "lon": 74.7421},
+    {"name": "Karkala", "name_kn": "ಕಾರ್ಕಳ", "taluk": "Karkala", "taluk_kn": "ಕಾರ್ಕಳ", "district": "Udupi", "district_kn": "ಉಡುಪಿ", "lat": 13.2144, "lon": 74.9984},
+    {"name": "Channagiri", "name_kn": "ಚನ್ನಗಿರಿ", "taluk": "Channagiri", "taluk_kn": "ಚನ್ನಗಿರಿ", "district": "Davanagere", "district_kn": "ದಾವಣಗೆರೆ", "lat": 14.0270, "lon": 75.9280},
+    {"name": "Tiptur", "name_kn": "ತಿಪಟೂರು", "taluk": "Tiptur", "taluk_kn": "ತಿಪಟೂರು", "district": "Tumakuru", "district_kn": "ತುಮಕೂರು", "lat": 13.2625, "lon": 76.4789},
+    {"name": "Tumakuru", "name_kn": "ತುಮಕೂರು", "taluk": "Tumakuru", "taluk_kn": "ತುಮಕೂರು", "district": "Tumakuru", "district_kn": "ತುಮಕೂರು", "lat": 13.3409, "lon": 77.1010},
+    {"name": "Arsikere", "name_kn": "ಅರಸೀಕೆರೆ", "taluk": "Arsikere", "taluk_kn": "ಅರಸೀಕೆರೆ", "district": "Hassan", "district_kn": "ಹಾಸನ", "lat": 13.3128, "lon": 76.2570},
+    {"name": "Holenarsipura", "name_kn": "ಹೊಳೆನರಸೀಪುರ", "taluk": "Holenarsipura", "taluk_kn": "ಹೊಳೆನರಸೀಪುರ", "district": "Hassan", "district_kn": "ಹಾಸನ", "lat": 12.7886, "lon": 76.2428},
+    {"name": "K.R. Pet", "name_kn": "ಕೆ.ಆರ್. ಪೇಟೆ", "taluk": "Krishnarajpet", "taluk_kn": "ಕೃಷ್ಣರಾಜಪೇಟೆ", "district": "Mandya", "district_kn": "ಮಂಡ್ಯ", "lat": 12.8631, "lon": 76.4913}
+  ]
+}

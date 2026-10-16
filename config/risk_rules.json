@@ -1,0 +1,166 @@
+{
+  "_meta": {
+    "title": "Thota Mitra Weather Conducive-Conditions & Spray Schedule Rules",
+    "status": "HEURISTIC_TO_BE_VALIDATED, validate against farm records and CPCRI/UAS field trials",
+    "version": "2.1.0",
+    "updated_at": "2026-10-10",
+    "agronomic_distinction": {
+      "published_cpcri_kau_guidance": "CPCRI & KAU published qualitative disease factors (high humidity, cool temps, alternating rain/sun, 1% Bordeaux mixture on bunches pre-monsoon and every 40 days during rain breaks).",
+      "software_numeric_heuristics": "All numeric factor weights (35/30/20/15), humidity cut-offs (82%, 90%), 20-28°C temperature window, 4-hour dry requirement, and 20 km/h wind limits are heuristic thresholds engineered for software decision support, NOT official published numbers. Claim no clinical accuracy until validated."
+    },
+    "authority_references": [
+      "ICAR-Central Plantation Crops Research Institute (CPCRI) Koleroga Bulletin (Qualitative guidance)",
+      "Kerala Agricultural University (KAU) Package of Practices (Beverages & Stimulants)",
+      "Frontiers in Plant Science (Timing of fungicide application against fruit rot)",
+      "Deccan Herald Malnad & Coastal Plantation reports",
+      "University of Agricultural and Horticultural Sciences (UAHS / KSNUAHS) Shivamogga"
+    ],
+    "disclaimer": "Decision support only, not an agricultural guarantee. Always verify with local CPCRI/UAS advisories and field conditions."
+  },
+  "rainy_day_definition_mm": 2.5,
+  "schedule_engine": {
+    "outbreak_monitoring_window": "Monitor closely 40–50 days after first monsoon rain in patchy-rain seasons; this is a documented timing observation, not a disease prediction.",
+    "recommended_spray_rounds": 3,
+    "stages": [
+      {
+        "round": 1,
+        "name_en": "Pre-monsoon Prophylactic Spray",
+        "name_kn": "ಮುಂಗಾರು ಪೂರ್ವ ಮುನ್ನೆಚ್ಚರಿಕೆ ಸಿಂಪರಣೆ",
+        "target_window": "Late May to 1st week of June (before continuous monsoon rains start)",
+        "purpose": "Shield young tender nut bunches with 1% Bordeaux mixture before Phytophthora meadii inoculum spreads.",
+        "fungicide": "1% Bordeaux mixture (1kg CuSO4 + 1kg CaO in 100L water) with rosin/adhesive"
+      },
+      {
+        "round": 2,
+        "name_en": "Second Monsoon Spray (40-Day Follow-Up)",
+        "name_kn": "ಎರಡನೇ ಸಿಂಪರಣೆ (೪೦ ದಿನಗಳ ನಂತರ)",
+        "target_window": "Around 40 days after 1st spray (typically mid-July during a rain break)",
+        "purpose": "Renew copper barrier washed off by heavy South-West monsoon rains.",
+        "interval_days": 40
+      },
+      {
+        "round": 3,
+        "name_en": "Third Spray (Extended Monsoon)",
+        "name_kn": "ಮೂರನೇ ಸಿಂಪರಣೆ (ಮಳೆ ಮುಂದುವರಿದರೆ)",
+        "target_window": "August / September if monsoon rains persist",
+        "purpose": "Protect developing nuts from late-season fruit rot / mahali drops.",
+        "interval_days": 40
+      }
+    ]
+  },
+  "crop_profiles": {
+    "arecanut": {
+      "name_en": "Arecanut (Betel nut / Adike)",
+      "name_kn": "ಅಡಿಕೆ",
+      "target_disease_en": "Fruit Rot / Koleroga / Mahali",
+      "target_disease_kn": "ಕೊಳೆರೋಗ / ಮಹಾಲಿ",
+      "pathogen": "Phytophthora meadii McRae",
+      "weights": {
+        "consecutive_rain": 35,
+        "relative_humidity": 30,
+        "cloud_cover": 20,
+        "temperature": 15
+      },
+      "thresholds": {
+        "consecutive_rain_days_moderate": 2,
+        "consecutive_rain_days_high": 4,
+        "rh_moderate_pct": 82.0,
+        "rh_high_pct": 90.0,
+        "cloud_cover_moderate_pct": 60.0,
+        "cloud_cover_high_pct": 80.0,
+        "temp_favorable_min_c": 20.0,
+        "temp_favorable_max_c": 28.0
+      },
+      "spray_guidelines": {
+        "recommended_treatment": "1% Bordeaux mixture on nut bunches with rosin adhesive or Metalaxyl-Mancozeb 0.2%",
+        "drying_time_required_hours": 4
+      }
+    },
+    "coconut": {
+      "name_en": "Coconut (Thengu)",
+      "name_kn": "ತೆಂಗು",
+      "target_disease_en": "Bud Rot / Mahali",
+      "target_disease_kn": "ಸುಳಿ ಕೊಳೆ ರೋಗ / ಮಹಾಲಿ",
+      "pathogen": "Phytophthora palmivora (Butler)",
+      "weights": {
+        "consecutive_rain": 35,
+        "relative_humidity": 30,
+        "cloud_cover": 20,
+        "temperature": 15
+      },
+      "thresholds": {
+        "consecutive_rain_days_moderate": 3,
+        "consecutive_rain_days_high": 5,
+        "rh_moderate_pct": 80.0,
+        "rh_high_pct": 88.0,
+        "cloud_cover_moderate_pct": 65.0,
+        "cloud_cover_high_pct": 85.0,
+        "temp_favorable_min_c": 22.0,
+        "temp_favorable_max_c": 32.0
+      },
+      "spray_guidelines": {
+        "recommended_treatment": "1% Bordeaux mixture crown spray or Bordeaux paste applied to central bud",
+        "drying_time_required_hours": 4
+      }
+    }
+  },
+  "risk_bands": {
+    "low": {
+      "min": 0,
+      "max": 39,
+      "code": "LOW",
+      "label_en": "Low Conduciveness",
+      "label_kn": "ಕಡಿಮೆ ಅನುಕೂಲತೆ (ಕಡಿಮೆ ಅಪಾಯ)",
+      "badge_color": "#2E7D32",
+      "action_summary_en": "Weather is currently dry or sunny. Environmental conditions are not conducive for fungal spread.",
+      "action_summary_kn": "ಪ್ರಸ್ತುತ ಹವಾಮಾನ ಒಣ ಅಥವಾ ಬಿಸಿಲಿನಿಂದ ಕೂಡಿದೆ. ಶಿಲೀಂಧ್ರ ಹರಡುವಿಕೆಗೆ ಅನುಕೂಲಕರವಾಗಿಲ್ಲ."
+    },
+    "medium": {
+      "min": 40,
+      "max": 69,
+      "code": "MEDIUM",
+      "label_en": "Moderate Conduciveness",
+      "label_kn": "ಮಧ್ಯಮ ಅನುಕೂಲತೆ",
+      "badge_color": "#ED6C02",
+      "action_summary_en": "Moderate humidity and intermittent wetness. Fungus can sporulate; keep sprayers and fungicide ready.",
+      "action_summary_kn": "ಮಧ್ಯಮ ತೇವಾಂಶ ಮತ್ತು ಆಗಾಗ ಮಳೆ. ಶಿಲೀಂಧ್ರ ಬೆಳವಣಿಗೆ ಸಾಧ್ಯ; ಔಷಧಿ ಮತ್ತು ಸ್ಪ್ರೇಯರ್ ಸಿದ್ಧವಾಗಿರಲಿ."
+    },
+    "high": {
+      "min": 70,
+      "max": 100,
+      "code": "HIGH",
+      "label_en": "High Conduciveness",
+      "label_kn": "ಹೆಚ್ಚು ಅನುಕೂಲತೆ (ಅಧಿಕ ಅಪಾಯ)",
+      "badge_color": "#D32F2F",
+      "action_summary_en": "Highly favorable weather for Koleroga (cool temps, >90% RH, continuous rain). Spray immediately at the next rain break.",
+      "action_summary_kn": "ಕೊಳೆರೋಗ ಹರಡುವಿಕೆಗೆ ಹವಾಮಾನ ಅತ್ಯಂತ ಅನುಕೂಲಕರವಾಗಿದೆ (ತಂಪು ಹವೆ, ಅಧಿಕ ತೇವಾಂಶ, ಸತತ ಮಳೆ). ಮಳೆ ಬಿಡುವು ಕೊಟ್ಟ ತಕ್ಷಣ ಸಿಂಪಡಿಸಿ."
+    }
+  },
+  "spray_rules": {
+    "avoid": {
+      "max_acceptable_rain_mm": 3.0,
+      "max_acceptable_rain_prob_pct": 65.0,
+      "max_acceptable_wind_speed_kmh": 20.0,
+      "max_acceptable_hourly_rain_mm": 1.5,
+      "reasons": {
+        "heavy_rain": "Heavy rain forecast will wash away Bordeaux mixture before 4-hour drying time.",
+        "high_rain_prob": "High probability of rain within the critical drying window.",
+        "high_wind": "Wind speeds exceed 20 km/h; canopy spraying will cause severe drift and uneven coverage."
+      }
+    },
+    "good": {
+      "max_rain_mm": 1.0,
+      "max_rain_prob_pct": 30.0,
+      "max_wind_speed_kmh": 15.0,
+      "min_consecutive_dry_hours": 4,
+      "reasons": {
+        "optimal_conditions": "Clear break with low rain probability and calm winds. Excellent 4+ hour drying window."
+      }
+    },
+    "monitor": {
+      "reasons": {
+        "intermittent_weather": "Marginal weather or scattered showers. Check morning sky and spray only if clear 4-hour break occurs."
+      }
+    }
+  }
+}

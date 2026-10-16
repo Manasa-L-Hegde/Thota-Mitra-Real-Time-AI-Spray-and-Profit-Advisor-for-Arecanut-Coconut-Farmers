@@ -1,0 +1,18 @@
+{
+  "name": "Thota Mitra - Arecanut & Coconut Advisory",
+  "short_name": "Thota Mitra",
+  "description": "Decision support system for Karnataka arecanut & coconut growers. Real-time monsoon fruit rot risk and spray window planning.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1B4332",
+  "theme_color": "#1B4332",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%231B4332'/><path d='M50 15 C30 35 25 65 50 85 C75 65 70 35 50 15 Z' fill='%23E9C46A'/><path d='M50 25 C40 45 40 60 50 75 C60 60 60 45 50 25 Z' fill='%232D6A4F'/></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
